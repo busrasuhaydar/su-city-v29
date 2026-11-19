@@ -461,14 +461,6 @@ canvas{touch-action:none}
                         col += tm(uSunCol * day * cz * smoothstep(0.35, 0.9, gm) * 0.55);
                     }
                 }
-                // v29 · gece deniz canlı: dalga sırtlarında ve kulaç/dalgacık izlerinde biyolüminesans pırıltılar, ay yolu
-                if (uNight > 0.05) {
-                    vec2 bc = floor(p * 1.9 + vec2(t * 0.07, -t * 0.05)); float bh = qh(bc);
-                    float bio = step(0.955, bh) * pow(max(0.0, sin(t * (0.6 + bh * 1.7) + bh * 50.0)), 10.0) * (1.0 - smoothstep(15.0, 240.0, dist));
-                    bio += rfoam * 1.6 + smoothstep(0.09, 0.2, vCrest) * 0.18 * qn(pa * 1.9 + t * 0.4) * (1.0 - smoothstep(40.0, 600.0, dist));
-                    col += tm(vec3(0.08, 0.7, 0.95) * bio * uNight * 0.55);
-                    col += tm(bodyLit * 0.0 + vec3(0.004, 0.012, 0.02) * (0.6 + 0.8 * windP) * uNight);
-                }
                 col += tm(spec);
                 float fogF = 1.0 - exp(-pow(uFogDensity * (1.0 - 0.55 * uNight) * dist, 2.0));
                 col = mix(col, tm(uFogColor), fogF);
